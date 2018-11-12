@@ -12,7 +12,7 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import tagLivros.DateTimeUtils;
 
 public class Report {
-	private static final String DEFAULT_DESCRIPTION = "DBSERVER TEST SUITE";
+	private static final String DEFAULT_DESCRIPTION = "TAGLIVROS CHECKOUT - TEST SUITE";
 	private static final String DEFAULT_PATH = "./reports/report_%s.html";
 	private static ExtentReports extentReport;
 	private static ExtentTest logger;
@@ -24,7 +24,7 @@ public class Report {
 		htmlReporter.config().setReportName(description);
 		htmlReporter.config().setEncoding("iso-8859-1");
 		htmlReporter.config().setCSS(".nav-wrapper { background-color: #1E317A !important; } .brand-logo { padding: 0 10px 0 0 !important; margin: 0 !important; position: absolute !important } .report-name { margin-left: 80px !important } .blue.darken-3 { background-color: #1E317A !important; color: #FFF !important;  }");
-		htmlReporter.config().setJS("$('.brand-logo').html('<img src=\"https://i.imgur.com/qDYwkD2.png\" class=\"db-logo\"/>');");
+		htmlReporter.config().setJS("$('.brand-logo').html('<img src=\"https://i.imgur.com/taglivroslogo.png\" class=\"company-logo\"/>');");
 		
 		defineStatusHierarchy();
 		

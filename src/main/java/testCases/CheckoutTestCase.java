@@ -6,6 +6,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.aventstack.extentreports.Status;
 
 import tagLivros.Config;
 import tagLivros.CsvDatapool;
@@ -23,7 +26,7 @@ public class CheckoutTestCase {
 
 	@Before
 	public void setUp() {
-		Report.startTest("Procurar Item e tenta adicioná-lo ao carrinho");
+		Report.startTest("Processo de checkou - Clube Mensal TagLivros");
 		
 		this.driver = Drivers.getChromeDriver();
 		this.driver.get(SYSTEM_URL);
@@ -35,22 +38,47 @@ public class CheckoutTestCase {
 	}
 	
 	@Test
-	public void testMain() {
+	public void testMain() throws InterruptedException {
 		this.checkout.clicarQueroCuradoria();
 		this.checkout.planoMensal();
 		datapool.reset();
+		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		while(datapool.hasNext()) {
+			//this.driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 			this.checkout.digitarEmail(datapool.getValue("email"));
-			Report.log("PASS", "message");
+			Report.log(Status.PASS, "message");
 			this.checkout.digitarNome(datapool.getValue("nome"));
 			this.checkout.digitarSobrenome(datapool.getValue("sobrenome"));
 			this.checkout.digitarCPF(datapool.getValue("cpf"));
 			this.checkout.digitarCelular(datapool.getValue("celular"));
 			this.checkout.clicarProximo();
+			//this.driver.manage().timeouts().implicitlyWait(70, TimeUnit.SECONDS);	
+			
+			this.checkout.digitarRua(datapool.getValue("rua"));
+			this.checkout.digitarNumero(datapool.getValue("numero"));
+			this.checkout.digitarComplemento(datapool.getValue("complemento"));
+			this.checkout.digitarBairro(datapool.getValue("bairro"));
+			this.checkout.digitarCidade(datapool.getValue("cidade"));
+			this.checkout.digitarCep(datapool.getValue("cep"));
+			this.checkout.digitarUf(datapool.getValue("uf"));
+			this.checkout.clicarProximo2();
+			this.checkout.clicarProximo();
+			this.checkout.digitarCep(datapool.getValue("cep"));
+			this.checkout.digitarNumero(datapool.getValue("numero"));
+			Thread.sleep(5000);
+			//this.checkout.clicarProximo3();
+			this.checkout.clicarProximo();
+			Thread.sleep(5000); //aqui tem que cuidr pq os campos tem o mesmo nome usar id diferente
+			this.checkout.digitarNumeroCartao(datapool.getValue("numerocartao"));
+			this.checkout.digitarValidade(datapool.getValue("mmaa"));
+			this.checkout.digitarCVV(datapool.getValue("cvv"));
+			this.checkout.digitarNomeTitular(datapool.getValue("nometitular"));
+			Thread.sleep(5000);
+			//this.checkout.clicarProximo3();
+			this.checkout.clicarProximo();
 			datapool.next();
 		}
-		
 		
 	}
 	
