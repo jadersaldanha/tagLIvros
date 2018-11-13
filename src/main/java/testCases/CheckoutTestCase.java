@@ -6,8 +6,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.aventstack.extentreports.Status;
 
 import tagLivros.Config;
@@ -26,7 +24,7 @@ public class CheckoutTestCase {
 
 	@Before
 	public void setUp() {
-		Report.startTest("Processo de checkou - Clube Mensal TagLivros");
+		Report.startTest("Processo de checkout - Clube Mensal TagLivros");
 		
 		this.driver = Drivers.getChromeDriver();
 		this.driver.get(SYSTEM_URL);
