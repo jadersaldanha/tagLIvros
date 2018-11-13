@@ -21,13 +21,14 @@ public class CheckoutCuradoriaTestCase {
 	private static final String SYSTEM_URL = Config.get("environment.taglivros.homolog");
 	private static final String DATAPOOL = Config.get("datapool.pasta");
 	private static final String IMAGEPATH = Config.get("screenshot.pasta");
+	
 	private WebDriver driver;
 	private CheckoutTasks checkout; 
 	private IDatapool datapool;
 
 	@Before
 	public void setUp() {
-		Report.startTest("Processo de checkout - Clube Mensal TagLivros");
+		Report.startTest("Processo de Checkout Curadoria - Clube TagLivros");
 		
 		this.driver = Drivers.getChromeDriver();
 		this.driver.get(SYSTEM_URL);
@@ -41,6 +42,7 @@ public class CheckoutCuradoriaTestCase {
 	@Test
 	public void testMain() throws InterruptedException {
 		this.checkout.clicarQueroCuradoria();
+		
 		if (datapool.getValue("planomensal").equals("planomensal")) {
 			this.checkout.planoMensal();
 		}
@@ -117,7 +119,6 @@ public class CheckoutCuradoriaTestCase {
 			Screenshot.Tirar(driver, screenshotArquivo1);
 			Report.log(Status.PASS, "Digitou UF", screenshotArquivo13);
 			
-			String screenshotArquivo14 = IMAGEPATH + Generator.dataHoraParaArquivo() +  ".png";
 			Thread.sleep(5000); //aqui tive que usar uma espera ímplicita e inclusive o thread sleep, tentei de várias formas usar webdriver wait e nao funcionou
 			this.checkout.clicarProximo();
 			Thread.sleep(5000); 
@@ -141,7 +142,6 @@ public class CheckoutCuradoriaTestCase {
 			Screenshot.Tirar(driver, screenshotArquivo18);
 			Report.log(Status.PASS, "Digitou nometitular", screenshotArquivo18);
 			
-			String screenshotArquivo19 = IMAGEPATH + Generator.dataHoraParaArquivo() +  ".png";
 			Thread.sleep(5000);
 			this.checkout.clicarProximo();
 			datapool.next();
@@ -152,7 +152,7 @@ public class CheckoutCuradoriaTestCase {
 	@After
 	public void tearDown() {
 		Report.close();
-		//this.driver.quit();
+		this.driver.quit();
 	}
 
 }

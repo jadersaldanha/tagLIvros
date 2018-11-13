@@ -1,0 +1,1 @@
+Para executar esse projeto de dois cliques em AssinaturaClubeTagLivrosRegressionTestSuite
