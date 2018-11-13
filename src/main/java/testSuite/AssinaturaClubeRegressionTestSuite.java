@@ -9,11 +9,11 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import tagLivros.Report;
 import testCases.AcessarAreadeUsuarioTestCase;
-import testCases.CheckoutTestCase;
+import testCases.CheckoutCuradoriaTestCase;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	CheckoutTestCase.class,
+	CheckoutCuradoriaTestCase.class,
 	AcessarAreadeUsuarioTestCase.class,
 })
 

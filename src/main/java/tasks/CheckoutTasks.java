@@ -47,14 +47,12 @@ public class CheckoutTasks {
 	}
 	
 	public void clicarProximo() {
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.elementToBeClickable(By.className("button__text")));
 		this.checkout.getProximoButton().click();
 	}
 	
 	public void clicarProximo2() {
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-		wait.until(ExpectedConditions.elementToBeClickable(By.className("step")));
+		WebDriverWait wait2 = new WebDriverWait(driver, 100);
+		wait2.until(ExpectedConditions.elementToBeClickable(By.className("step")));
 		this.checkout.getProximo2Button().click();
 	}
 

@@ -17,6 +17,10 @@ public class CheckoutAppObjects {
 		return driver.findElement(By.className("button__text"));
 	}
 	
+	public WebElement getQueroIneditosButton () {
+		return driver.findElement(By.className("button__text"));
+	}
+	
 	public WebElement getPlanoMensalButton () {
 		return driver.findElement(By.className("button__content"));
 	}
