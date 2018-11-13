@@ -21,8 +21,16 @@ public class CheckoutTasks {
 		this.checkout.getQueroCuradoriaButton().click();	
 	}
 	
+	public void clicarQueroIneditos () {
+		this.checkout.getQueroIneditosButton().click();	
+	}
+	
 	public void planoMensal () {
 		this.checkout.getPlanoMensalButton().click();
+	}
+	
+	public void planoAnual () {
+		this.checkout.getPlanoAnualButton().click();
 	}
 	
 	public void digitarEmail(String email) {
@@ -52,6 +60,7 @@ public class CheckoutTasks {
 	
 	public void clicarProximo2() {
 		WebDriverWait wait2 = new WebDriverWait(driver, 100);
+		
 		wait2.until(ExpectedConditions.elementToBeClickable(By.className("step")));
 		this.checkout.getProximo2Button().click();
 	}

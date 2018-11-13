@@ -18,11 +18,15 @@ public class CheckoutAppObjects {
 	}
 	
 	public WebElement getQueroIneditosButton () {
-		return driver.findElement(By.className("button__text"));
+		return driver.findElement(By.xpath("//*[@id=\"portal\"]/div/div/div[2]/section/div/div[2]/div/div[2]/div/p"));
 	}
 	
 	public WebElement getPlanoMensalButton () {
 		return driver.findElement(By.className("button__content"));
+	}
+	
+	public WebElement getPlanoAnualButton () {
+		return driver.findElement(By.xpath("//*[@id=\"portal\"]/div/div/div[2]/section/div/div[2]/div/div[2]/div/p"));
 	}
 	
 	public WebElement getEmailCadastroTextField () {
