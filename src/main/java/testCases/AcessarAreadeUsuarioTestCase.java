@@ -14,6 +14,7 @@ import tagLivros.IDatapool;
 import tagLivros.Report;
 import tagLivros.Screenshot;
 import tasks.CheckoutTasks;
+import verificationPoints.ValidarAcessodeUsuarioVerificationPoint;
 
 public class AcessarAreadeUsuarioTestCase {
 	
@@ -23,10 +24,11 @@ public class AcessarAreadeUsuarioTestCase {
 	private WebDriver driver;
 	private CheckoutTasks checkout; 
 	private IDatapool datapool;
+	private ValidarAcessodeUsuarioVerificationPoint validar;
 
 	@Before
 	public void setUp() {
-		Report.startTest("Acesso a Area de Usuario - Clube TagLivros");
+		Report.startTest("Acesso a Area de Usuario");
 		
 		this.driver = Drivers.getChromeDriver();
 		this.driver.get(SYSTEM_URL);
@@ -35,6 +37,7 @@ public class AcessarAreadeUsuarioTestCase {
 		
 		this.checkout = new CheckoutTasks(driver);
 		datapool = new CsvDatapool(DATAPOOL);
+		this.validar = new ValidarAcessodeUsuarioVerificationPoint(this.driver);
 	}
 	
 	@Test
@@ -48,6 +51,7 @@ public class AcessarAreadeUsuarioTestCase {
 		Screenshot.Tirar(driver, screenshotArquivo2);
 		Report.log(Status.PASS, "Digitou senha", screenshotArquivo2);
 		this.checkout.clicarProximo();
+		validar.validarMensagemErro("Ocorreu um erro de conexão. Por favor, verifique seu dados e tente novamente.");	
 	}
 	
 	@After
